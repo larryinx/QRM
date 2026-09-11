@@ -1,0 +1,29 @@
+.DS_Store
+.idea/
+.vscode/
+
+*.egg-info
+**/__pycache__
+.pytest_cache/
+.ruff_cache/
+
+# environments
+.env
+.venv
+.venv-*/
+
+# datasets are built locally; only the raw ARC json files are tracked
+/data/*
+!/data/kaggle/
+/data/kaggle/*
+!/data/kaggle/combined/
+
+# run outputs
+/results/
+/outputs/
+/analysis/
+/eval_results/
+/pretrained/
+/temp/
+wandb/
+**/logs/

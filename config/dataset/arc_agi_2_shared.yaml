@@ -1,0 +1,2 @@
+dataset_paths:
+  - ${oc.env:PWD}/data/arc2concept-aug-1000-shared

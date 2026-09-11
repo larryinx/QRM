@@ -1,0 +1,4 @@
+L_layers: 2
+H_cycles: 3
+L_cycles: 4
+puzzle_emb_rank: 64  # Low-rank factorization: weights [N, 64] + proj [64, 512]

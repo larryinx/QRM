@@ -1,0 +1,2 @@
+dataset_paths:
+  - ${oc.env:PWD}/data/arc1concept-aug-1000-no-color

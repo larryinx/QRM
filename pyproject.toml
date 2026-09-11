@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qrm"
+version = "0.1.0"
+description = "Quantized Recursive Model: Advancing Recursive Reasoning with Quantized Tree Search"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+dependencies = [
+    "torch==2.9.0",
+    "transformers>=4.47,<6",
+    "accelerate>=1.0",
+    "numpy==1.26.4",
+    "hydra-core>=1.3",
+    "omegaconf>=2.3",
+    "pydantic>=2.0",
+    "argdantic>=1.3",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+    "prettytable>=3.0",
+    "safetensors>=0.4",
+    "huggingface-hub>=0.30",
+    "einops>=0.8",
+    "numba>=0.60",
+    "adam-atan2-pytorch>=0.2",
+    "packaging>=23.0",
+    "wandb>=0.18",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "vector-quantize-pytorch>=1.14",   # reference FSQ implementation used by the tests
+    "ruff>=0.8",
+    "black>=24.0",
+    "isort>=5.13",
+    "pre-commit>=3.0",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# torch is installed from PyPI, which ships CUDA 12 wheels for Linux x86_64.
+# To target a different CUDA build, point uv at the matching PyTorch index:
+#
+# [[tool.uv.index]]
+# name = "pytorch-cu126"
+# url = "https://download.pytorch.org/whl/cu126"
+# explicit = true
+#
+# [tool.uv.sources]
+# torch = { index = "pytorch-cu126" }
+
+[tool.pytest.ini_options]
+testpaths = ["src/qrm/tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.isort]
+profile = "black"

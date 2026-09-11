@@ -1,0 +1,24 @@
+{
+  "round": "round_16",
+  "experiments": {
+    "TRM-Att + FSQ, res0.3, greedy": {
+      "summary": "analysis/fsq_entropy/att_sudoku_res03/fsq_entropy_summary.json",
+      "exact_acc": 0.7694
+    },
+    "TRM-Att + FSQ, alpha=1, greedy": {
+      "summary": "analysis/fsq_entropy/att_sudoku_alpha1/fsq_entropy_summary.json",
+      "exact_acc": 0.3238
+    },
+    "TRM-MLP + FSQ, res0.3, greedy": {
+      "summary": "analysis/fsq_entropy/mlp_sudoku_res03/fsq_entropy_summary.json",
+      "exact_acc": 0.8437
+    }
+  },
+  "trajectories": {
+    "TRM-Att + FSQ, res0.3, greedy": {
+      "epoch 1": "analysis/fsq_entropy_training/att_sudoku_res03/ep01/fsq_entropy_summary.json",
+      "epoch 5": "analysis/fsq_entropy_training/att_sudoku_res03/ep05/fsq_entropy_summary.json",
+      "final": "analysis/fsq_entropy/att_sudoku_res03/fsq_entropy_summary.json"
+    }
+  }
+}

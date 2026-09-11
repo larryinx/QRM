@@ -1,0 +1,76 @@
+defaults:
+  - _self_
+  - model: trm_att_sudoku
+  - dataset: sudoku
+  - train: sudoku
+
+dataset:
+  seed: 0
+  global_batch_size: 768
+
+model:
+  # Recursion
+  halt_exploration_prob: 0.1
+  halt_max_steps: 16        # TRM: max supervision steps; QRM: tree depth and inference chain length
+
+  H_cycles: 3
+  L_cycles: 6
+
+  H_layers: 0
+  L_layers: 2
+
+  hidden_size: 512
+  num_heads: 8
+  expansion: 4
+
+  puzzle_emb_ndim: ${.hidden_size}
+  puzzle_emb_len: 16        # prefix positions reserved for the puzzle embedding
+
+  pos_encodings: rope
+  forward_dtype: bfloat16
+
+  mlp_t: False              # MLP over the sequence axis instead of attention
+  no_ACT_continue: True     # TRM halting with the halt head only (no continue head)
+
+  # FSQ (TRM + FSQ when use_fsq=True; qrm_* configs always enable it)
+  use_fsq: False
+  fsq_levels: [8, 5, 5, 5]  # codebook = prod(levels) = 1000
+  fsq_top_k: 8              # TRM: sampling pool; QRM: candidates per expansion (branching factor)
+  fsq_sampling_training: False
+  fsq_sampling_inference: False
+  fsq_residual_mode: fixed  # fixed | learned_scalar | attention (TRM only)
+  fsq_residual_weight: 1.0  # alpha in z = alpha * quantized + (1 - alpha) * continuous; 1.0 = pure quantization
+  fsq_pre_norm: False       # standardize the projected latent before tanh
+  fsq_recon_weight: 0.0     # TRM: weight of MSE(quantized, continuous); 0 = off
+
+  # TRM: up-weight the loss of sequences that are not exactly correct
+  weighted_em_loss: False
+  weighted_em_weight: 1.0
+
+train:
+  run_name: ~
+  output_dir: ~             # set to an existing run directory to resume it
+
+  epochs: 100000
+  eval_interval: 10000
+
+  # QRM only: optimizer steps per search. 0 = one step per full search
+  # (model.num_iterations). Smaller values update the weights while a tree
+  # is still being built.
+  gradient_accumulation_steps: 0
+
+  lr: 1e-4
+  lr_min_ratio: 1.0
+  lr_warmup_steps: 2000
+
+  beta1: 0.9
+  beta2: 0.95
+  weight_decay: 0.1
+  puzzle_emb_weight_decay: 0.1
+
+  puzzle_emb_lr: 1e-2       # SignSGD learning rate for the puzzle embeddings
+
+  ema: False
+  ema_rate: 0.999
+
+  eval_use_compile: True    # evaluate with the compiled model (EMA weights swapped in place)

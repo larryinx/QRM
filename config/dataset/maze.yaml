@@ -1,0 +1,2 @@
+dataset_paths:
+  - ${oc.env:PWD}/data/maze-30x30-hard-1k

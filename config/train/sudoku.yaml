@@ -1,0 +1,13 @@
+epochs: 50000
+eval_interval: 5000
+lr: 1e-4
+puzzle_emb_lr: 1e-4
+weight_decay: 1.0
+puzzle_emb_weight_decay: 1.0
+
+beta1: 0.9
+beta2: 0.95
+ema: True
+ema_rate: 0.999
+lr_min_ratio: 1.0
+lr_warmup_steps: 2000

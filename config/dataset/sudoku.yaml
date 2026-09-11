@@ -1,0 +1,2 @@
+dataset_paths:
+  - ${oc.env:PWD}/data/sudoku-extreme-1k-aug-1000
