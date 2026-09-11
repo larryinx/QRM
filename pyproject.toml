@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "qrm"
 version = "0.1.0"
-description = "Quantized Recursive Model: Advancing Recursive Reasoning with Quantized Tree Search"
+description = "Quantized Recursive Model: Advancing Looped Reasoning with Quantized Tree Search"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.10"

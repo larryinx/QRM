@@ -1,4 +1,4 @@
-# Quantized Recursive Model: Advancing Recursive Reasoning with Quantized Tree Search
+# Quantized Recursive Model: Advancing Looped Reasoning with Quantized Tree Search
 
 QRM extends the [Tiny Recursive Model](https://github.com/SamsungSAILMontreal/TinyRecursiveModels)
 (TRM) with a discrete bottleneck on the latent state that is carried
@@ -142,17 +142,6 @@ docs/               design, codebase, training, datasets, analysis, experiments
 [docs/README.md](docs/README.md) indexes the design overview, codebase
 guide, training guide, dataset notes, analysis tooling, the FSQ codebook
 study, the experiment log and the design notes.
-
-## Citation
-
-```bibtex
-@article{qrm2026,
-  title   = {Quantized Recursive Model: Advancing Recursive Reasoning with Quantized Tree Search},
-  author  = {},
-  year    = {2026},
-  note    = {Preprint}
-}
-```
 
 ## Acknowledgements and license
 
